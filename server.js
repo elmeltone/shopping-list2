@@ -14,19 +14,11 @@ Storage.prototype.add = function(name) {
     return item;
 };
 
-Storage.prototype.delete = function(name) {
-    var item = {name: name, id: this.id};
-    this.items.delete(item);
+/*Storage.prototype.delete = function(idToRemove) {
+    var idToRemove = {name: name, id: this.id};
+    this.items.splice();
     this.id -= 1;
-};
-
-Storage.prototype.update = function(name, id) {
-  this.items.forEach(function(item) {
-    if (item.id == id) {
-      item.name = name;
-    }
-  });
-};
+};*/
 
 var storage = new Storage();
 storage.add('Broad beans');
@@ -50,16 +42,16 @@ app.post('/items', jsonParser, function(req, res) {
 });
 
 app.delete('/items/:id', function(req, res) {
+    var idToRemove = parseInt(req.params.id);
     if (req.params.id == (undefined || null)) {
       return res.sendStatus(400);
     } else {
-      for (vari=0; i<storage.items.length; i++) {
-        if (storage.items[i].id == req.params.id) {
-          storage.items.splice(i, 1);
-        }
+      for (var i=0; i<storage.items.length; i++) {
+        if (storage.items[i].id == idToRemove) {
+          storage.items.splice(i, 1)};
       }
-      res.send(200);
-    }
+      res.status(200).json({})
+    };
 });
 
 app.listen(process.env.PORT || 8080);
