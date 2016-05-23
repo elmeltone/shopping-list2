@@ -54,4 +54,17 @@ app.delete('/items/:id', function(req, res) {
     };
 });
 
+app.put('/items/:id', jsonParser, function(req, res) {
+    var idToPut = req.params.id;
+    var item = storage.items[idToPut];
+
+    for (var i=0; i<storage.items.length; i++){
+      if (storage.items[i].id == idToPut){
+        storage.items[i].name = req.body.name;
+        break;
+      }
+    }
+    res.status(200).json({});
+});
+
 app.listen(process.env.PORT || 8080);
