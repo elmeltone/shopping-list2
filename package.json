@@ -12,7 +12,10 @@
     "body-parser": "^1.15.1",
     "express": "^4.13.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elmeltone/shopping-list2.git"
