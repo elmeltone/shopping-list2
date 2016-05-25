@@ -64,7 +64,7 @@ app.put('/items/:id', jsonParser, function(req, res) {
         break;
       }
     }
-    res.status(200).json({});
+    res.status(200).json(item);
 });
 
 app.listen(8080);
